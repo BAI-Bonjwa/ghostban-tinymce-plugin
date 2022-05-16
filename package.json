@@ -1,6 +1,6 @@
 {
   "name": "ghostban-tinymce-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "prepublishOnly": "yarn lint && yarn build",

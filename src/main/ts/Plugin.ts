@@ -2,7 +2,8 @@ import { Editor, TinyMCE } from "tinymce";
 
 declare const tinymce: TinyMCE;
 
-const setup = (editor: Editor, url: string): void => {
+// const setup = (editor: Editor, url: string): void => {
+const setup = (editor: Editor): void => {
   editor.ui.registry.addButton("ghostban-tinymce-plugin", {
     text: "Go",
     onAction: () => {
@@ -26,7 +27,7 @@ const setup = (editor: Editor, url: string): void => {
               items: [
                 { text: "Simple", value: "si" },
                 { text: "Standard", value: "st" },
-                { text: "Advanced", value: "ad" },
+                // { text: "Advanced", value: "ad" },
               ],
             },
             {
@@ -53,10 +54,8 @@ const setup = (editor: Editor, url: string): void => {
           },
         ],
         onSubmit: function (api) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const data: any = api.getData();
-          /* Insert content when the window form is submitted */
-          // editor.insertContent(`<p>${data.share_url}<p>`);
-          // editor.insertContent(`<iframe src="${data.share_url}" />`);
           let url = data.share_url;
           let width = 320;
           let height = 350;
