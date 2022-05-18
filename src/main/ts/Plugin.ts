@@ -4,6 +4,16 @@ declare const tinymce: TinyMCE;
 
 // const setup = (editor: Editor, url: string): void => {
 const setup = (editor: Editor): void => {
+  tinymce.addI18n("zh_CN", {
+    "Board Type": "棋盘类型",
+    Simple: "简洁",
+    Basic: "基本",
+    Standard: "标准",
+    "Embed Go/Weiqi/Baduk": "嵌入棋盘",
+    "Share URL(required)": "分享 URL（必填）",
+    "Title(optional, only visible in standard and advanced mode)":
+      "标题（可选，仅标准模式可见）",
+  });
   editor.ui.registry.addButton("ghostban-tinymce-plugin", {
     text: "Go",
     onAction: () => {
@@ -89,4 +99,5 @@ const setup = (editor: Editor): void => {
 
 export default (): void => {
   tinymce.PluginManager.add("ghostban-tinymce-plugin", setup);
+  tinymce.PluginManager.requireLangPack("ghostban-tinymce-plugin", "zh_CN");
 };

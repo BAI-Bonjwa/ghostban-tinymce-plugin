@@ -8,6 +8,7 @@ Plugin();
 
 tinymce.init({
   selector: "textarea.tinymce",
+  language: "zh_CN",
   plugins: "code ghostban-tinymce-plugin",
   toolbar: "ghostban-tinymce-plugin",
   valid_elements: "iframe[!src|width|height|frameborder:0|allowfullscreen]",
