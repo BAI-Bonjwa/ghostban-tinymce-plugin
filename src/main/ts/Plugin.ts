@@ -9,8 +9,13 @@ const setup = (editor: Editor): void => {
     Simple: "简洁",
     Basic: "基本",
     Standard: "标准",
+    Small: "小尺寸",
+    Medium: "中尺寸",
+    Large: "大尺寸",
+    Size: "嵌入尺寸",
     "Embed Go/Weiqi/Baduk": "嵌入棋盘",
-    "Share URL(required)": "分享 URL（必填）",
+    "Embed URL(required, can be generated from the editor page)":
+      "嵌入 URL（必填, 可在在线编辑器页面编辑棋谱后生成）",
     "Title(optional, only visible in standard and advanced mode)":
       "标题（可选，仅标准模式可见）",
   });
@@ -27,8 +32,9 @@ const setup = (editor: Editor): void => {
           items: [
             {
               type: "input",
-              name: "share_url",
-              label: "Share URL(required)",
+              name: "embed_url",
+              label:
+                "Embed URL(required, can be generated from the editor page)",
             },
             {
               type: "listbox", // component type
@@ -38,6 +44,16 @@ const setup = (editor: Editor): void => {
                 { text: "Simple", value: "si" },
                 { text: "Standard", value: "st" },
                 // { text: "Advanced", value: "ad" },
+              ],
+            },
+            {
+              type: "listbox", // component type
+              name: "size", // identifier
+              label: "Size", // text for the label
+              items: [
+                { text: "Small", value: "small" },
+                { text: "Medium", value: "medium" },
+                { text: "Large", value: "large" },
               ],
             },
             {
@@ -51,6 +67,9 @@ const setup = (editor: Editor): void => {
               html: "",
             },
           ],
+        },
+        initialData: {
+          size: "medium",
         },
         buttons: [
           {
@@ -66,9 +85,22 @@ const setup = (editor: Editor): void => {
         onSubmit: function (api) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const data: any = api.getData();
-          let url = data.share_url;
-          let width = 320;
-          let height = 350;
+          let url = data.embed_url;
+          [];
+
+          const size = {
+            si: {
+              small: { width: 350, height: 380 },
+              medium: { width: 450, height: 492 },
+              large: { width: 600, height: 656 },
+            },
+            st: {
+              small: { width: 450, height: 253 },
+              medium: { width: 750, height: 421 },
+              large: { width: 900, height: 504 },
+            },
+          };
+
           if (data.title) {
             url += `&t=${data.title}`;
           }
@@ -77,18 +109,12 @@ const setup = (editor: Editor): void => {
             url += `&k=${data.type}`;
           }
 
-          if (data.type === "st" || data.type === "ad") {
-            width = 640;
-            height = 360;
-          }
-
-          if (data.type === "ad") {
-            width = 680;
-            height = 360;
-          }
-
           editor.insertContent(
-            `<div><iframe frameborder="0" scrolling="no" width="${width}" height="${height}" src="${url}"></iframe></div>`
+            `<div><iframe frameborder="0" scrolling="no" width="${
+              size[data.type][data.size].width
+            }" height="${
+              size[data.type][data.size].height
+            }" src="${url}"></iframe></div>`
           );
           api.close();
         },
@@ -99,5 +125,5 @@ const setup = (editor: Editor): void => {
 
 export default (): void => {
   tinymce.PluginManager.add("ghostban-tinymce-plugin", setup);
-  tinymce.PluginManager.requireLangPack("ghostban-tinymce-plugin", "zh_CN");
+  // tinymce.PluginManager.requireLangPack("ghostban-tinymce-plugin", "zh_CN");
 };
