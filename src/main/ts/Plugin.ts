@@ -96,8 +96,8 @@ const setup = (editor: Editor): void => {
             },
             st: {
               small: { width: 450, height: 253 },
-              medium: { width: 750, height: 421 },
-              large: { width: 900, height: 504 },
+              medium: { width: 750, height: 410 },
+              large: { width: 900, height: 560 },
             },
           };
 
