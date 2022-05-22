@@ -95,8 +95,8 @@ const setup = (editor: Editor): void => {
               lg: { width: 600, height: 656 },
             },
             st: {
-              sm: { width: 450, height: 253 },
-              md: { width: 750, height: 410 },
+              sm: { width: 685, height: 350 },
+              md: { width: 785, height: 450 },
               lg: { width: 900, height: 560 },
             },
           };
