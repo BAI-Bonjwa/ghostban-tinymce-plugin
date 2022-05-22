@@ -51,9 +51,9 @@ const setup = (editor: Editor): void => {
               name: "size", // identifier
               label: "Size", // text for the label
               items: [
-                { text: "Small", value: "small" },
-                { text: "Medium", value: "medium" },
-                { text: "Large", value: "large" },
+                { text: "Small", value: "sm" },
+                { text: "Medium", value: "md" },
+                { text: "Large", value: "lg" },
               ],
             },
             {
@@ -90,14 +90,14 @@ const setup = (editor: Editor): void => {
 
           const size = {
             si: {
-              small: { width: 350, height: 380 },
-              medium: { width: 450, height: 492 },
-              large: { width: 600, height: 656 },
+              sm: { width: 350, height: 380 },
+              md: { width: 450, height: 492 },
+              lg: { width: 600, height: 656 },
             },
             st: {
-              small: { width: 450, height: 253 },
-              medium: { width: 750, height: 410 },
-              large: { width: 900, height: 560 },
+              sm: { width: 450, height: 253 },
+              md: { width: 750, height: 410 },
+              lg: { width: 900, height: 560 },
             },
           };
 
@@ -107,6 +107,10 @@ const setup = (editor: Editor): void => {
 
           if (data.type) {
             url += `&k=${data.type}`;
+          }
+
+          if (data.size) {
+            url += `&s=${data.size}`;
           }
 
           editor.insertContent(
