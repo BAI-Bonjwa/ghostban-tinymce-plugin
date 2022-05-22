@@ -69,7 +69,8 @@ const setup = (editor: Editor): void => {
           ],
         },
         initialData: {
-          size: "medium",
+          size: "lg",
+          simple: "st",
         },
         buttons: [
           {
