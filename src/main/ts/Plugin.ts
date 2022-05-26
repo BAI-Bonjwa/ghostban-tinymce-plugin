@@ -51,7 +51,7 @@ const setup = (editor: Editor): void => {
               name: "size", // identifier
               label: "Size", // text for the label
               items: [
-                { text: "Small", value: "sm" },
+                // { text: "Small", value: "sm" },
                 { text: "Medium", value: "md" },
                 { text: "Large", value: "lg" },
               ],
@@ -68,10 +68,7 @@ const setup = (editor: Editor): void => {
             },
           ],
         },
-        initialData: {
-          size: "lg",
-          simple: "st",
-        },
+        initialData: { size: "lg", simple: "st" },
         buttons: [
           {
             type: "cancel",
@@ -87,7 +84,6 @@ const setup = (editor: Editor): void => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const data: any = api.getData();
           let url = data.embed_url;
-          [];
 
           const size = {
             si: {
