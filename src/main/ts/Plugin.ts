@@ -111,11 +111,11 @@ const setup = (editor: Editor): void => {
           }
 
           editor.insertContent(
-            `<div><iframe frameborder="0" scrolling="no" width="${
+            `<iframe class="gg-embed-board" frameborder="0" scrolling="no" width="${
               size[data.type][data.size].width
             }" height="${
               size[data.type][data.size].height
-            }" src="${url}"></iframe></div>`
+            }" src="${url}"></iframe>`
           );
           api.close();
         },
